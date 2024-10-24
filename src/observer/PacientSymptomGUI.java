@@ -24,12 +24,13 @@ public class PacientSymptomGUI extends JFrame {
 	private JLabel errorLabel;
 	private JLabel lblPacient;
 	private JLabel labelPacient;
-
+	private Covid19Pacient p;
 	
 	/**
 	 * Create the frame.
 	 */
 	public PacientSymptomGUI(Covid19Pacient p) {
+		this.p=p;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(200, 100, 450, 300);
 		contentPane = new JPanel();
@@ -52,13 +53,13 @@ public class PacientSymptomGUI extends JFrame {
 		symptomComboBox.addItem(new Symptom("dolor de garganta",100,3));
 		symptomComboBox.addItem(new Symptom("cefalea",100,3));
 		symptomComboBox.addItem(new Symptom("mialgia",100,3));
-		symptomComboBox.addItem(new Symptom("escalofríos",100,3));
+		symptomComboBox.addItem(new Symptom("escalofrios",100,3));
 
-		symptomComboBox.addItem(new Symptom("náuseas o vómitos",100,1));
-		symptomComboBox.addItem(new Symptom("congestión nasal",100,1));
+		symptomComboBox.addItem(new Symptom("nauseas o vomitos",100,1));
+		symptomComboBox.addItem(new Symptom("congestion nasal",100,1));
 		symptomComboBox.addItem(new Symptom("diarrea",100,1));
 		symptomComboBox.addItem(new Symptom("hemoptisis",100,1));
-		symptomComboBox.addItem(new Symptom("congestión conjuntival",100,1));
+		symptomComboBox.addItem(new Symptom("congestion conjuntival",100,1));
 		
 		
 		contentPane.add(symptomComboBox);
@@ -78,9 +79,9 @@ public class PacientSymptomGUI extends JFrame {
 				errorLabel.setText(" ");
 				if (new Integer(weightField.getText())<=3) {
 		    	System.out.println("Symptom added :"+(Symptom)symptomComboBox.getSelectedItem());
-
 				//addSymptomByName ...
-				
+		    	p.addSymptomByName(((Symptom)symptomComboBox.getSelectedItem()).getName(),	
+		    			Integer.parseInt(weightField.getText()));
 			} else errorLabel.setText("ERROR, Weight between [1..3]");
 				
 			}
@@ -95,7 +96,7 @@ public class PacientSymptomGUI extends JFrame {
 
 		    	System.out.println("Symptom removed :"+(Symptom)symptomComboBox.getSelectedItem());
 
-				//removeSymptomByName...
+		    	p.removeSymptomByName(((Symptom)symptomComboBox.getSelectedItem()).getName());
 				
 			} 
 		});

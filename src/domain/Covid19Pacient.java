@@ -3,10 +3,11 @@ package domain;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Observable;
 import java.util.Set;
 import iterator.Covid19PacientIterator;
 
-public class Covid19Pacient {
+public class Covid19Pacient extends Observable {
     private String name;
     private int age;
     private Map<Symptom, Integer> symptoms = new HashMap<>();
@@ -62,13 +63,20 @@ public class Covid19Pacient {
                 symptoms.put(s, w);
             }
         }
+        setChanged();
+        notifyObservers();
         return s;
     }
 
     public Symptom removeSymptomByName(String symptomName) {
         Symptom s = getSymptomByName(symptomName);
         System.out.println("Symptom to remove: " + s);
-        if (s != null) symptoms.remove(s);
+        if (s != null) {
+        	symptoms.remove(s);
+        	setChanged();
+        	notifyObservers();
+        }
+        
         return s;
     }
 
