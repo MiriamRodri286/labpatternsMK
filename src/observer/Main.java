@@ -2,6 +2,7 @@ package observer;
 
 import java.util.Observable;
 
+import adapter2.ShowPacientTableGUI;
 import domain.Covid19Pacient;
 
 public class Main {
@@ -16,6 +17,8 @@ public class Main {
 		new PacientSymptomGUI(pacient1);
 		new PacientThermometerGUI(pacient1);
 		new SemaphorGUI(pacient1);
+		//new ShowPacientTableGUI(pacient1);
+		
 		/**
 		// Bigarren pazientea
 		Covid19Pacient pacient2 = new Covid19Pacient("maria", 40);

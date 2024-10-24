@@ -1,8 +1,12 @@
 package adapter2;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import javax.swing.table.AbstractTableModel;
 
 import domain.Covid19Pacient;
+import domain.Symptom;
 
 public class Covid19PacientTableModelAdapter extends AbstractTableModel {
 	  protected Covid19Pacient pacient;
@@ -15,21 +19,35 @@ public class Covid19PacientTableModelAdapter extends AbstractTableModel {
 
 	  public int getColumnCount() {
 	    // Challenge!
-		 return 1;
+		  return columnNames.length;
 	  }
 
 	  public String getColumnName(int i) {
 	    // Challenge!
-		  return "Column name 1";
+		  return columnNames[i];
 	  }
 
 	  public int getRowCount() {
 	    // Challenge!
-		  return 1;
+		  return pacient.getSymptoms().size();
 	  }
 
 	  public Object getValueAt(int row, int col) {
 	    // Challenge!
-		  return "value";
+		  Iterator <Symptom> it= pacient.getSymptoms().iterator();
+		  Set<Symptom> symptomsSet = pacient.getSymptoms();
+		  Symptom symptom= null;
+		  for(int i= 0; i <= row && it.hasNext(); i++) {
+			  symptom = it.next();
+		  }
+		  if (symptom != null) {
+		        if (col == 0) {
+		            return symptom.getName();
+		        } else {
+		            return pacient.getWeight(symptom);
+		        }
+		    }
+
+		    return null;
 	  }
 	}

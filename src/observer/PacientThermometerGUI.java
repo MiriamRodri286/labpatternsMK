@@ -34,7 +34,6 @@ public class PacientThermometerGUI extends Frame implements Observer{
 		obs.addObserver(this);
 	}
 
-	
 	class TemperatureCanvas extends Canvas {	
 		
 		public void set(int level) { current = level; }	
@@ -63,14 +62,12 @@ public class PacientThermometerGUI extends Frame implements Observer{
 			long redtop = height*(get()-getMax())/(getMin()-getMax());
 			g.fillRect(left+1, top + (int)redtop, width-1, height-(int)redtop);
 		}
-		
 		private static final int width = 20;
 		private static final int top = 20;
 		private static final int left = 100;
 		private static final int right = 250;
 		private static final int height = 200;
 	}
-
 
 	@Override
 	public void update(Observable	o,	Object	args)	{
