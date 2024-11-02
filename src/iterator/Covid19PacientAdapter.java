@@ -8,13 +8,15 @@ import java.util.Vector;
 import adapter.InvertedIterator;
 import domain.Symptom;
 
-public class Covid19PacientAdapter implements Iterator<Symptom>, InvertedIterator{
-	List<Symptom> symptoms=new Vector<Symptom>();
+public class Covid19PacientAdapter implements InvertedIterator{
+	private Covid19PacientIterator normalIterator;
+	List<Symptom> symptoms;
 	int position=0;
 
 	public Covid19PacientAdapter(Set<Symptom> symptomSet) {
-        this.symptoms.addAll(symptomSet);
-        this.goLast();
+        this.symptoms = new Vector<>(symptomSet); // Crea una lista a partir del conjunto
+        this.normalIterator = new Covid19PacientIterator(symptomSet);
+        this.position = symptoms.size(); // Inicializa en la posición final
     }
 
 	@Override
@@ -33,17 +35,5 @@ public class Covid19PacientAdapter implements Iterator<Symptom>, InvertedIterato
     public void goLast() {
         this.position = symptoms.size() - 1;
     }
-
-	@Override
-	public boolean hasNext() {
-		return position < symptoms.size();
-	}
-
-	@Override
-	public Symptom next() {
-		Symptom symptom = symptoms.get(position);
-        position++;
-        return symptom;
-	}
 
 }
