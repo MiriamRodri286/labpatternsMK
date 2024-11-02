@@ -23,12 +23,12 @@ public class SymptomF {
         List<Double> index5 = Arrays.asList(87.9, 67.7, 38.1, 33.4);
         List<String> impact3 = Arrays.asList("disnea", "dolor de garganta", "cefalea","mialgia","escalofrios");
         List<Double> index3 = Arrays.asList(18.6, 13.9, 13.6, 14.8, 11.4);
-        List<String> impact1 = Arrays.asList("mareos","nauseas", "vómitos", "congestión nasal","diarrea","hemoptisis","congestion conjuntival");
+        List<String> impact1 = Arrays.asList("mareos","nauseas", "vomitos", "congestion nasal","diarrea","hemoptisis","congestion conjuntival");
         List<Double> index1 = Arrays.asList(5.0, 4.8, 3.7, 0.9, 0.8);
 
-        List<String> digestiveSymptom=Arrays.asList("nauseas", "vómitos","diarrea");
+        List<String> digestiveSymptom=Arrays.asList("nauseas", "vomitos","diarrea");
         List<String> neuroMuscularSymptom=Arrays.asList("fiebre", "astenia", "cefalea", "mialgia","escalofrios");
-        List<String> respiratorySymptom=Arrays.asList("tos seca","expectoracion","disnea","dolor de garganta", "congestión nasal","hemoptisis","congestion conjuntival");
+        List<String> respiratorySymptom=Arrays.asList("tos seca","expectoracion","disnea","dolor de garganta", "congestion nasal","hemoptisis","congestion conjuntival");
         List<String> movilitySymptom=Arrays.asList("mareos");
         int impact = 0;
         double index = 0;
