@@ -1,39 +1,47 @@
 package iterator;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
-
 import adapter.InvertedIterator;
 import domain.Symptom;
 
-public class Covid19PacientAdapter implements InvertedIterator{
-	private Covid19PacientIterator normalIterator;
-	List<Symptom> symptoms;
-	int position=0;
+public class Covid19PacientAdapter implements InvertedIterator {
+    private List<Symptom> symptoms;
+    private int position;
 
-	public Covid19PacientAdapter(Set<Symptom> symptomSet) {
-        this.symptoms = new Vector<>(symptomSet); // Crea una lista a partir del conjunto
-        this.normalIterator = new Covid19PacientIterator(symptomSet);
-        this.position = symptoms.size(); // Inicializa en la posición final
+    public Covid19PacientAdapter(Set<Symptom> symptomSet) {
+        this.symptoms = new Vector<>(symptomSet);
+        this.position = symptoms.size();
     }
 
-	@Override
-    public Object previous() {
-        Symptom symptom = symptoms.get(position);
+    @Override
+    public Symptom previous() {
+        if (!hasPrevious()) {
+            throw new IndexOutOfBoundsException("No hay elementos anteriores");
+        }
         position--;
-        return symptom;
+        return symptoms.get(position);
     }
 
     @Override
     public boolean hasPrevious() {
-        return position >= 0;
+        return position > 0;
     }
 
     @Override
     public void goLast() {
-        this.position = symptoms.size() - 1;
+        this.position = symptoms.size();
     }
 
+    public boolean hasNext() {
+        return position < symptoms.size();
+    }
+
+    public Symptom next() {
+        if (!hasNext()) {
+            throw new IndexOutOfBoundsException("No hay elementos siguientes");
+        }
+        return symptoms.get(position++);
+    }
 }

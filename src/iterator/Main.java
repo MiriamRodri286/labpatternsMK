@@ -27,7 +27,7 @@ public class Main {
             System.out.println(sortedByName.next());
         }
 
-        // Ordenar por �ndice de severidad usando SeverityIndexComparator
+        // Ordenar por  indice de severidad usando SeverityIndexComparator
         System.out.println("\nSeveretyIndexComparator:");
         Iterator<Object> sortedBySeverity = Sorting.sortedIterator(adapter, new SeveretyIndexComparator());
         while (sortedBySeverity.hasNext()) {
