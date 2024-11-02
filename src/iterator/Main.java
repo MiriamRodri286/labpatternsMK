@@ -9,12 +9,12 @@ import java.util.Iterator;
 
 public class Main {
     public static void main(String[] args) {
-        // Crear paciente con 5 síntomas
+        // Crear paciente con 5 sï¿½ntomas
         Covid19Pacient pacient = new Covid19Pacient("Ane", 29);
         pacient.addSymptom(new Symptom("s1", 10, 13), 1);
         pacient.addSymptom(new Symptom("s2", 10, 3), 2);
         pacient.addSymptom(new Symptom("s3", 10, 10), 3);
-        pacient.addSymptom(new Symptom("s4", 10, 10), 4);
+        pacient.addSymptom(new Symptom("s4", 10, 10), 4); 
         pacient.addSymptom(new Symptom("s5", 10, 10), 5);
 
         // Adaptador para el paciente
@@ -27,7 +27,7 @@ public class Main {
             System.out.println(sortedByName.next());
         }
 
-        // Ordenar por índice de severidad usando SeverityIndexComparator
+        // Ordenar por ï¿½ndice de severidad usando SeverityIndexComparator
         System.out.println("\nSeveretyIndexComparator:");
         Iterator<Object> sortedBySeverity = Sorting.sortedIterator(adapter, new SeveretyIndexComparator());
         while (sortedBySeverity.hasNext()) {
