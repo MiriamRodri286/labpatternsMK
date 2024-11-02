@@ -20,5 +20,4 @@ public class Sorting {
 	      Collections.sort(list, comparator);
 	      return list.iterator();
 	  }
-
 }

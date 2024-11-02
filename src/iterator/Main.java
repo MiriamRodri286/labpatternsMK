@@ -1,29 +1,37 @@
 package iterator;
 
-import java.util.Iterator;
-
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-
+import adapter.SymptomNameComparator;
+import adapter.SeveretyIndexComparator;
+import adapter.Sorting;
 import domain.Covid19Pacient;
 import domain.Symptom;
+import java.util.Iterator;
 
-	public class Main {
+public class Main {
+    public static void main(String[] args) {
+        // Crear paciente con 5 síntomas
+        Covid19Pacient pacient = new Covid19Pacient("Ane", 29);
+        pacient.addSymptom(new Symptom("s1", 10, 13), 1);
+        pacient.addSymptom(new Symptom("s2", 10, 3), 2);
+        pacient.addSymptom(new Symptom("s3", 10, 10), 3);
+        pacient.addSymptom(new Symptom("s4", 10, 10), 4);
+        pacient.addSymptom(new Symptom("s5", 10, 10), 5);
 
-		public static void main(String[] args) {
-			Covid19Pacient p=new Covid19Pacient("Ane", 29);
-			p.addSymptom(new Symptom("s1", 10, 10), 1);
-			p.addSymptom(new Symptom("s2", 10, 10), 2);
-			p.addSymptom(new Symptom("s3", 10, 10), 3);
-			p.addSymptom(new Symptom("s4", 10, 10), 4);
-			p.addSymptom(new Symptom("s5", 10, 10), 5);
-			
-			Iterator i=p.iterator();
-			while(i.hasNext())
-				System.out.println(i.next());
+        // Adaptador para el paciente
+        Covid19PacientAdapter adapter = new Covid19PacientAdapter(pacient.getSymptoms());
 
-		}
+        // Ordenar por nombre usando SymptomNameComparator
+        System.out.println("SymptomNameComparator:");
+        Iterator<Object> sortedByName = Sorting.sortedIterator(adapter, new SymptomNameComparator());
+        while (sortedByName.hasNext()) {
+            System.out.println(sortedByName.next());
+        }
 
-	}
-
+        // Ordenar por índice de severidad usando SeverityIndexComparator
+        System.out.println("\nSeveretyIndexComparator:");
+        Iterator<Object> sortedBySeverity = Sorting.sortedIterator(adapter, new SeveretyIndexComparator());
+        while (sortedBySeverity.hasNext()) {
+            System.out.println(sortedBySeverity.next());
+        }
+    }
+}
