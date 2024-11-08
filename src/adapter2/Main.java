@@ -12,8 +12,7 @@ public class Main {
 		pacient1.addSymptomByName("astenia", 3);
 		System.out.println(pacient1.getSymptoms());
 		ShowPacientTableGUI gui1=new ShowPacientTableGUI(pacient1);
-		gui1.setPreferredSize(
-			      new java.awt.Dimension(300, 200));
+		gui1.setPreferredSize(new java.awt.Dimension(300, 200));
 		gui1.setVisible(true);
 		
 		Covid19Pacient pacient2=new Covid19Pacient("kepa",20);
@@ -22,8 +21,7 @@ public class Main {
 		pacient2.addSymptomByName("astenia", 3);
 		System.out.println(pacient2.getSymptoms());
 		ShowPacientTableGUI gui2=new ShowPacientTableGUI(pacient2);
-		gui2.setPreferredSize(
-			      new java.awt.Dimension(300, 200));
+		gui2.setPreferredSize(new java.awt.Dimension(300, 200));
 		gui2.setVisible(true);
 		
 	}

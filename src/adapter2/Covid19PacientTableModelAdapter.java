@@ -18,22 +18,18 @@ public class Covid19PacientTableModelAdapter extends AbstractTableModel {
 	  }
 
 	  public int getColumnCount() {
-	    // Challenge!
 		  return columnNames.length;
 	  }
 
 	  public String getColumnName(int i) {
-	    // Challenge!
 		  return columnNames[i];
 	  }
 
 	  public int getRowCount() {
-	    // Challenge!
 		  return pacient.getSymptoms().size();
 	  }
 
 	  public Object getValueAt(int row, int col) {
-	    // Challenge!
 		  Iterator <Symptom> it= pacient.getSymptoms().iterator();
 		  Set<Symptom> symptomsSet = pacient.getSymptoms();
 		  Symptom symptom= null;
